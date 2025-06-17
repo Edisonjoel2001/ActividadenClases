@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio de Tecnología</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script defer src="main.js"></script>
+  <script defer src="contador.js"></script>
+</head>
+<body class="light-theme">
+  <header class="bg-primary text-white text-center py-4">
+    <h1>Mis Cursos de Tecnología</h1>
+    <p>Total de cursos: <span id="contador-cursos">0</span></p>
+    <button id="toggle-theme" class="btn btn-secondary mt-2">Cambiar tema</button>
+  </header>
+
+  <!-- Carrusel de imágenes -->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img1.jpg" class="d-block w-100" alt="Imagen 1">
+      </div>
+      <div class="carousel-item">
+        <img src="img2.jpg" class="d-block w-100" alt="Imagen 2">
+      </div>
+      <div class="carousel-item">
+        <img src="img3.jpg" class="d-block w-100" alt="Imagen 3">
+      </div>
+      <div class="carousel-item">
+        <img src="img4.jpg" class="d-block w-100" alt="Imagen 3">
+      </div>
+      <div class="carousel-item">
+        <img src="img5.1.jpg" class="d-block w-100" alt="Imagen 3">
+      </div><div class="carousel-item">
+        <img src="img6.1.jpg" class="d-block w-100" alt="Imagen 3">
+      </div>
+      <div class="carousel-item">
+        <img src="img7.1.jpg" class="d-block w-100" alt="Imagen 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Sección de Cards -->
+  <section class="container my-5">
+    <div class="row" id="card-container">
+      <!-- Cards originales -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="html.jpg" class="card-img-top" alt="HTML">
+          <div class="card-body">
+            <h5 class="card-title">Curso de HTML</h5>
+            <p class="card-text">Aprende a estructurar páginas web con HTML5.</p>
+            <a href="https://youtu.be/MJkdaVFHrto?si=8IK9szXMkDXDSetk" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <!-- ... (más cards originales aquí) -->
+
+      <!-- Nuevas cards de tecnología -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="AI.jpg" class="card-img-top" alt="Inteligencia Artificial">
+          <div class="card-body">
+            <h5 class="card-title">Inteligencia Artificial</h5>
+            <p class="card-text">Descubre el potencial de la IA en el desarrollo de software.</p>
+            <a href="https://youtu.be/gYrfGnYob5Q?si=ZgOsaQZE00hSA64n" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="cloud.jpg" class="card-img-top" alt="Computación en la Nube">
+          <div class="card-body">
+            <h5 class="card-title">Computación en la Nube</h5>
+            <p class="card-text">Curso sobre servicios en la nube como AWS, Azure y Google Cloud.</p>
+            <a href="https://youtu.be/ru8TjDuMh6I?si=6lYab5WTf5WV1IzF" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="ciberseguridad.jpg" class="card-img-top" alt="Ciberseguridad">
+    <div class="card-body">
+      <h5 class="card-title">Ciberseguridad</h5>
+      <p class="card-text">Protege sistemas y datos frente a ataques informáticos.</p>
+      <a href="https://youtu.be/gzES0MuWqHE?si=7qlXl4g-81Iu7JVQ" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="iot.jpg" class="card-img-top" alt="Internet de las Cosas">
+    <div class="card-body">
+      <h5 class="card-title">Internet de las Cosas (IoT)</h5>
+      <p class="card-text">Conecta dispositivos inteligentes para automatización y control.</p>
+      <a href="https://youtu.be/x6cTpJozRd0?si=z2i_mnqdIPkBqhvA" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="bigdata.jpg" class="card-img-top" alt="Big Data">
+    <div class="card-body">
+      <h5 class="card-title">Big Data</h5>
+      <p class="card-text">Analiza grandes volúmenes de datos para obtener insights valiosos.</p>
+      <a href="https://youtu.be/M26iIqmqWkI?si=ip9l7sOX2_PFgMlo" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="devops.jpg" class="card-img-top" alt="DevOps">
+    <div class="card-body">
+      <h5 class="card-title">DevOps</h5>
+      <p class="card-text">Mejora la colaboración entre desarrollo y operaciones para entregar software rápido.</p>
+      <a href="https://youtu.be/LGzCcC6hAf4?si=BRlPBNm5joy1zpzo" class="btn btn-primary">Ver más</a> 
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="blockchain.jpg" class="card-img-top" alt="Blockchain">
+    <div class="card-body">
+      <h5 class="card-title">Blockchain</h5>
+      <p class="card-text">Tecnología de registro seguro y descentralizado para múltiples aplicaciones.</p>
+      <a href="https://youtu.be/mKCcki6azHo?si=7XDgnJS4j3FfM9Ic" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="realidad-virtual.jpg" class="card-img-top" alt="Realidad Virtual">
+    <div class="card-body">
+      <h5 class="card-title">Realidad Virtual (VR)</h5>
+      <p class="card-text">Sumérgete en mundos digitales interactivos para entretenimiento y formación.</p>
+      <a href="https://youtu.be/Gya9kW1AyHo?si=UcAT-0NUmXCG8kUw" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="aprendizaje-automatico.jpg" class="card-img-top" alt="Aprendizaje Automático">
+    <div class="card-body">
+      <h5 class="card-title">Aprendizaje Automático</h5>
+      <p class="card-text">Construye sistemas que aprenden y mejoran automáticamente con datos.</p>
+      <a href="https://youtu.be/xrQ1YH0PnrM?si=CMMtLrRWqh1u5-0N" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="robotica.jpg" class="card-img-top" alt="Robótica">
+    <div class="card-body">
+      <h5 class="card-title">Robótica</h5>
+      <p class="card-text">Diseña y controla robots para tareas industriales y cotidianas.</p>
+      <a href="https://youtu.be/D9h5NVtbaf8?si=X2ghGfSBT3YSDVT7" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="virtualizacion.jpg" class="card-img-top" alt="Virtualización">
+    <div class="card-body">
+      <h5 class="card-title">Virtualización</h5>
+      <p class="card-text">Optimiza recursos creando entornos virtuales de servidores y redes.</p>
+      <a href="https://youtu.be/K1vPbQtOlSc?si=ZYfoZK-3S3wFBrzn" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mb-4">
+  <div class="card">
+    <img src="desarrollo-movil.jpg" class="card-img-top" alt="Desarrollo Móvil">
+    <div class="card-body">
+      <h5 class="card-title">Desarrollo Móvil</h5>
+      <p class="card-text">Crea aplicaciones para smartphones y tablets en plataformas Android e iOS.</p>
+      <a href="https://youtu.be/vJapzH_46a8?si=T8NL2MOOCNdCW1hS" class="btn btn-primary">Ver más</a>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <!-- Formulario para añadir nueva card -->
+    <div class="mt-4">
+      <h4>Añadir nuevo curso</h4>
+      <input type="text" id="tituloCurso" placeholder="Título del curso" class="form-control mb-2">
+      <input type="text" id="descripcionCurso" placeholder="Descripción del curso" class="form-control mb-2">
+      <button onclick="agregarCurso()" class="btn btn-success">Añadir curso</button>
+    </div>
+  </section>
+
+  <footer class="text-center text-white py-3 bg-dark">
+    <p>&copy; 2025 Edison Cabezas - Portafolio Tecnológico</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
