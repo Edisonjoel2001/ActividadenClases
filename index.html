@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sitio Web Moderno y Responsivo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+  /* Reinicio de CSS */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* BARRA DE NAVEGACIÓN */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255 255 255 / 0.1);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255 255 255 / 0.15);
+  }
+
+  nav.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    background: linear-gradient(45deg, #c084fc, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    color: #e0e7ff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #c084fc, #38bdf8);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: #a78bfa;
+    outline: none;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a:focus::after {
+    width: 100%;
+  }
+
+  .mobile-menu-button {
+    background: none;
+    border: none;
+    color: #e0e7ff;
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+  }
+  .mobile-menu-button:focus {
+    outline: 2px solid #c084fc;
+    outline-offset: 2px;
+  }
+
+  /* Navegación móvil */
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background: rgba(39 39 42 / 0.95);
+      backdrop-filter: blur(14px);
+      height: calc(100vh - 60px);
+      width: 240px;
+      flex-direction: column;
+      padding: 24px 16px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      gap: 24px;
+      z-index: 99;
+      border-left: 1px solid rgba(255 255 255 / 0.15);
+    }
+    .nav-links.open {
+      transform: translateX(0);
+    }
+    .mobile-menu-button {
+      display: block;
+    }
+  }
+
+  /* CARRUSEL */
+  .carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 48px auto 64px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    background: rgba(255 255 255 / 0.05);
+    backdrop-filter: blur(15px);
+  }
+
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .carousel-button {
+    pointer-events: all;
+    position: absolute;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    font-family: 'Material Icons';
+    font-size: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  .carousel-button:hover,
+  .carousel-button:focus {
+    background: rgba(197, 181, 253, 0.8);
+    outline: none;
+  }
+
+  .carousel-button.prev {
+    left: 16px;
+  }
+  .carousel-button.next {
+    right: 16px;
+  }
+
+  /* TARJETAS */
+  .cards-section {
+    max-width: 1200px;
+    margin: 0 auto 96px auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 32px;
+  }
+
+  .card {
+    background: rgba(255 255 255 / 0.07);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(80, 71, 211, 0.4);
+  }
+
+  .card-image {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: #e0e7ff;
+  }
+
+  .card-description {
+    font-size: 1rem;
+    color: #c7d2fe;
+    flex-grow: 1;
+  }
+
+  .card-button {
+    margin-top: 20px;
+    align-self: flex-start;
+    background: #a78bfa;
+    border: none;
+    color: #1e293b;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-button:hover,
+  .card-button:focus {
+    background: #8b5cf6;
+    color: white;
+    outline: none;
+  }
+
+  /* PIE DE PÁGINA */
+  footer {
+    background: rgba(255 255 255 / 0.1);
+    backdrop-filter: blur(14px);
+    color: #94a3b8;
+    padding: 48px 32px;
+    border-top: 1px solid rgba(255 255 255 / 0.15);
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .footer-section {
+    flex: 1 1 220px;
+    min-width: 220px;
+  }
+
+  .footer-section h4 {
+    font-weight: 700;
+    color: #c7d2fe;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover,
+  .footer-links a:focus {
+    color: #a78bfa;
+    outline: none;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .footer-social a {
+    color: #94a3b8;
+    font-size: 28px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-social a:hover,
+  .footer-social a:focus {
+    color: #a78bfa;
+    outline: none;
+  }
+
+  /* Ajustes de diseño responsivo */
+  @media (max-width: 768px) {
+    nav.container {
+      padding: 16px;
+    }
+    .cards-section {
+      padding: 0 16px;
+      grid-template-columns: 1fr;
+      margin-bottom: 48px;
+    }
+    footer {
+      padding: 32px 16px;
+    }
+    .footer-container {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="container" role="navigation" aria-label="Navegación principal">
+    <a href="#" class="logo">Clases Lenguaje Web</a>
+    <button aria-expanded="false" aria-controls="primary-navigation" class="mobile-menu-button" id="mobile-menu-button" aria-label="Alternar menú">
+      Menú
+    </button>
+    <div class="nav-links" id="primary-navigation">
+      <a href="#home" tabindex="0">Inicio</a>
+      <a href="#carousel" tabindex="0">Galería</a>
+      <a href="#cards" tabindex="0">Tarjetas</a>
+      <a href="#footer" tabindex="0">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Carrusel -->
+  <section id="carousel" class="carousel" aria-label="Carrusel de imágenes principal">
+    <div class="carousel-images" id="carousel-images">
+      <div class="carousel-slide" aria-hidden="false">
+        <img src="P1.jpg" alt="Vista panorámica de una casa moderna junto al lago con cielo al atardecer" />
+      </div>
+      <div class="carousel-slide" aria-hidden="true">
+        <img src="P2.jpg" alt="Ciudad iluminada por la noche con rascacielos" />
+      </div>
+      <div class="carousel-slide" aria-hidden="true">
+        <img src="P3.jpg" alt="Sendero de aventura en la montaña con excursionistas y cielo azul" />
+      </div>
+    </div>
+    <div class="carousel-buttons">
+      <button class="carousel-button prev" aria-label="Imagen anterior" id="prev-slide" tabindex="0">arrow_back</button>
+      <button class="carousel-button next" aria-label="Siguiente imagen" id="next-slide" tabindex="0">arrow_forward</button>
+    </div>
+  </section>
+
+  <!-- Tarjetas -->
+  <section id="cards" class="cards-section" aria-label="Tarjetas destacadas">
+    <article class="card" tabindex="0">
+      <div class="card-image">
+        <img src="P4.jpg" alt="Pantalla de Codigo" />
+      </div>
+      <h3 class="card-title">PDF Consulta CSS Y Flexbox</h3>
+      <p class="card-description">Aqui se encuentra la consulta de flexblox y css</p>
+      <div class="hero-buttons">
+      <a href="Consulta Flexbox y CSS Grid.pdf" download class="btn-primary">Flexbox y CSS</a>
+      </div>
+      </a>
+    </article>
+    <article class="card" tabindex="0">
+      <div class="card-image">
+        <img src="P5.jpg" alt="Codigo CSS" />
+      </div>
+      <h3 class="card-title">Ranas</h3>
+      <p class="card-description">Aqui se encuentra las capturas del juego de la ranita</p>
+      <div class="hero-buttons">
+      <a href="Ranas.pdf" download class="btn-primary">Juego Ranas</a>
+      </div>
+      </a>
+    </article>
+    <article class="card" tabindex="0">
+      <div class="card-image">
+        <img src="P6.png" alt="Senderos emocionantes de montaña y experiencias de aventura al aire libre" />
+      </div>
+      <h3 class="card-title">Web IA</h3>
+      <p class="card-description">Aqui esta la pagina web creada, con IA</p>
+      <a href="https://edisonjoel2001.github.io/WebIA/" target="_blank" rel="noopener" class="card-button" tabindex="0" aria-label="Ver más sobre Viajes de Aventura">
+        Pagina IA <span class="material-icons" aria-hidden="true">arrow_forward</span>
+      </a>
+    </article>
+    <article class="card" tabindex="0">
+      <div class="card-image">
+        <img src="P7.png" alt="Senderos emocionantes de montaña y experiencias de aventura al aire libre" />
+      </div>
+      <h3 class="card-title">Crud </h3>
+      <p class="card-description">Aqui esta el ultmimo que es el CRUD, que va conectado a base de datos</p>
+      <a href="https://crudphpec.wuaze.com/index.php" target="_blank" rel="noopener" class="card-button" tabindex="0" aria-label="Ver más sobre Viajes de Aventura">
+        CRUD  <span class="material-icons" aria-hidden="true">arrow_forward</span>
+      </a>
+    </article>
+  </section>
+</main>
+
+<footer id="footer" role="contentinfo">
+  <div class="footer-container">
+    <section class="footer-section" aria-labelledby="footer-about-title">
+      <h4 id="footer-about-title">Sobre Nosotros</h4>
+      <p>SitioModerno es tu fuente de inspiración para diseño, últimas tendencias tecnológicas y aventuras de viaje. Estamos comprometidos con la calidad y la innovación.</p>
+    </section>
+
+    <section class="footer-section" aria-labelledby="footer-links-title">
+      <h4 id="footer-links-title">Enlaces Rápidos</h4>
+      <ul class="footer-links">
+        <li><a href="#home" tabindex="0">Inicio</a></li>
+        <li><a href="#carousel" tabindex="0">Galería</a></li>
+        <li><a href="#cards" tabindex="0">Tarjetas</a></li>
+        <li><a href="#footer" tabindex="0">Contacto</a></li>
+      </ul>
+    </section>
+
+    <section class="footer-section" aria-labelledby="footer-social-title">
+      <h4 id="footer-social-title">Síguenos</h4>
+      <div class="footer-social">
+        <a href="https://facebook.com" aria-label="Facebook" tabindex="0"><span class="material-icons" aria-hidden="true">facebook</span></a>
+        <a href="https://twitter.com" aria-label="Twitter" tabindex="0"><span class="material-icons" aria-hidden="true">twitter</span></a>
+        <a href="https://instagram.com" aria-label="Instagram" tabindex="0"><span class="material-icons" aria-hidden="true">instagram</span></a>
+      </div>
+    </section>
+  </div>
+</footer>
+
+<script>
+  // Alternar menú móvil
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const navLinks = document.getElementById('primary-navigation');
+
+  mobileMenuButton.addEventListener('click', () => {
+    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+    mobileMenuButton.setAttribute('aria-expanded', !expanded);
+    navLinks.classList.toggle('open');
+  });
+
+  // Lógica del carrusel
+  const slides = document.querySelectorAll('.carousel-slide');
+  const carouselImages = document.getElementById('carousel-images');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+  let currentIndex = 0;
+
+  function updateCarousel(index) {
+    carouselImages.style.transform = `translateX(-${index * 100}%)`;
+    slides.forEach((slide, i) => {
+      slide.setAttribute('aria-hidden', i !== index);
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel(currentIndex);
+  });
+
+  // Soporte de teclado para botones del carrusel
+  prevBtn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      prevBtn.click();
+    }
+  });
+  nextBtn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      nextBtn.click();
+    }
+  });
+
+  // Auto-reproducción del carrusel cada 6 segundos
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel(currentIndex);
+  }, 6000);
+</script>
+</body>
+</html>
+
